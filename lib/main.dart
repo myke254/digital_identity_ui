@@ -1,6 +1,7 @@
 import 'package:digital_identity_ui/Enums/Enums/ModelEnums.dart';
 import 'package:digital_identity_ui/RepoLayer/Models/LocationModel.dart';
 import 'package:digital_identity_ui/ServiceLayer/ApiService.dart';
+import 'package:digital_identity_ui/screens/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,9 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xff8c261e),
+        primarySwatch: Colors.brown,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home:const Login()//const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
