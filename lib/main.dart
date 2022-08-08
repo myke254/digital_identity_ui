@@ -36,8 +36,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() async {
-    List<LocationModel> locations = await DataAccess<LocationModel>()
+    var locations = await DataAccess<LocationModel>()
         .getAll("location/get-all-locations", ModelEnums.LocationModel);
+
     print(locations.first.name);
     // print(alllocations.first.name);
   }

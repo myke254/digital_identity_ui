@@ -59,22 +59,22 @@ class VoucheeModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = this.id;
-    data['dateCreated'] = this.dateCreated;
-    data['firstName'] = this.firstName;
-    data['lastName'] = this.lastName;
-    data['middleName'] = this.middleName;
-    data['voucherRefId'] = this.voucherRefId;
-    data['voice'] = this.voice;
-    data['nationality'] = this.nationality;
-    data['dob'] = this.dob;
-    data['gender'] = this.gender;
-    data['digitalId'] = this.digitalId;
-    if (this.photos != null) {
-      data['photos'] = this.photos!.map((v) => v.toJson()).toList();
+    data['id'] = id;
+    data['dateCreated'] = dateCreated;
+    data['firstName'] = firstName;
+    data['lastName'] = lastName;
+    data['middleName'] = middleName;
+    data['voucherRefId'] = voucherRefId;
+    data['voice'] = voice;
+    data['nationality'] = nationality;
+    data['dob'] = dob;
+    data['gender'] = gender;
+    data['digitalId'] = digitalId;
+    if (photos != null) {
+      data['photos'] = photos!.map((v) => v.toJson()).toList();
     }
-    if (this.connection != null) {
-      data['connection'] = this.connection!.map((v) => v.toJson()).toList();
+    if (connection != null) {
+      data['connection'] = connection!.map((v) => v.toJson()).toList();
     }
     return data;
   }
