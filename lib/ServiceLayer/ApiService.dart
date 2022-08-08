@@ -93,7 +93,7 @@ class ApiService {
   }
 
   Future<bool> updateid(String url, String id, Map data) async {
-    final Response response = await put(
+    final Response response = await patch(
       Uri.parse('$apiUrl$url/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
