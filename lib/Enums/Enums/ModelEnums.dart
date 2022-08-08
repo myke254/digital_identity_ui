@@ -1,7 +1,7 @@
 enum ModelEnums {
-  LocationModel,
-  VoucheeModel,
-  VoucherModel,
-  ConnectionModel,
-  PhotosModel,
+  locationModel,
+  voucheeModel,
+  voucherModel,
+  connectionModel,
+  photosModel,
 }

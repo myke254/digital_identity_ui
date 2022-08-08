@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() async {
     //start by adding
     List<LocationModel> alllocations = await ApiService()
-            .getAll("location/get-all-locations", ModelEnums.LocationModel)
+            .getAll("location/get-all-locations", ModelEnums.locationModel)
         as List<LocationModel>;
     print(alllocations.first.name);
   }

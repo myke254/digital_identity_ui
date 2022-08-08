@@ -18,24 +18,24 @@ class ApiService {
       List<dynamic> body = jsonDecode(res.body);
       List<dynamic> result = [];
       switch (type) {
-        case ModelEnums.ConnectionModel:
+        case ModelEnums.connectionModel:
           result = body
               .map((dynamic item) => ConnectionModel.fromJson(item))
               .toList();
           break;
-        case ModelEnums.LocationModel:
+        case ModelEnums.locationModel:
           result =
               body.map((dynamic item) => LocationModel.fromJson(item)).toList();
           break;
-        case ModelEnums.VoucheeModel:
+        case ModelEnums.voucheeModel:
           result =
               body.map((dynamic item) => VoucheeModel.fromJson(item)).toList();
           break;
-        case ModelEnums.VoucherModel:
+        case ModelEnums.voucherModel:
           result =
               body.map((dynamic item) => VoucherModel.fromJson(item)).toList();
           break;
-        case ModelEnums.PhotosModel:
+        case ModelEnums.photosModel:
           result =
               body.map((dynamic item) => PhotosModel.fromJson(item)).toList();
           break;
@@ -54,19 +54,19 @@ class ApiService {
       var result;
       var body = jsonDecode(response.body);
       switch (type) {
-        case ModelEnums.ConnectionModel:
+        case ModelEnums.connectionModel:
           result = ConnectionModel.fromJson(body);
           break;
-        case ModelEnums.LocationModel:
+        case ModelEnums.locationModel:
           result = LocationModel.fromJson(body);
           break;
-        case ModelEnums.VoucheeModel:
+        case ModelEnums.voucheeModel:
           result = VoucheeModel.fromJson(body);
           break;
-        case ModelEnums.VoucherModel:
+        case ModelEnums.voucherModel:
           result = VoucherModel.fromJson(body);
           break;
-        case ModelEnums.PhotosModel:
+        case ModelEnums.photosModel:
           result = PhotosModel.fromJson(body);
           break;
         default:

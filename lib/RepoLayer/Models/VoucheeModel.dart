@@ -17,9 +17,7 @@ class VoucheeModel {
   List<ConnectionModel>? connection;
 
   VoucheeModel(
-      {this.id,
-      this.dateCreated,
-      this.firstName,
+      {this.firstName,
       this.lastName,
       this.middleName,
       this.voucherRefId,
@@ -32,8 +30,6 @@ class VoucheeModel {
       this.connection});
 
   VoucheeModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    dateCreated = json['dateCreated'];
     firstName = json['firstName'];
     lastName = json['lastName'];
     middleName = json['middleName'];
@@ -59,8 +55,6 @@ class VoucheeModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
-    data['id'] = this.id;
-    data['dateCreated'] = this.dateCreated;
     data['firstName'] = this.firstName;
     data['lastName'] = this.lastName;
     data['middleName'] = this.middleName;
