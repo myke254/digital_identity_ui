@@ -1,6 +1,7 @@
 import 'package:digital_identity_ui/Enums/Enums/ModelEnums.dart';
 import 'package:digital_identity_ui/RepoLayer/Models/LocationModel.dart';
 import 'package:digital_identity_ui/ServiceLayer/ApiService.dart';
+import 'package:digital_identity_ui/ServiceLayer/DataAccess.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -35,11 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() async {
-    //start by adding
-    List<LocationModel> alllocations = await ApiService()
-            .getAll("location/get-all-locations", ModelEnums.LocationModel)
-        as List<LocationModel>;
-    print(alllocations.first.name);
+    List<LocationModel> locations = await DataAccess<LocationModel>()
+        .getAll("location/get-all-locations", ModelEnums.LocationModel);
+    print(locations.first.name);
+    // print(alllocations.first.name);
   }
 
   @override
