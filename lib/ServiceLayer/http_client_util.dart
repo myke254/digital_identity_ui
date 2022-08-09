@@ -37,21 +37,21 @@ class HttpClientUtil {
     
   }
 
-  Future<Response> postAsync<T>(model) async {
+  Future<Response> postAsync(model) async {
     
       Map<String, dynamic> data = model.toJson();
       Response response = await dio.post("$baseUrl/$endpoint", data: data);
       return response;
   }
 
-  Future<Response> patchAsync<T>(model,String id) async {
+  Future<Response> patchAsync(model,String id) async {
     
       Map<String, dynamic> data = model.toJson();
       Response response = await dio.patch("$baseUrl/$endpoint/$id", data: data);
       return response;
   }
 
-  Future<Response> deleteAsync<T>(String id) async{
+  Future<Response> deleteAsync(String id) async{
     Response response = await dio.delete("$baseUrl/$endpoint/$id");
     return response;
   }
