@@ -15,7 +15,7 @@ class LocationModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = id;
     data['dateCreated'] = dateCreated;
     data['name'] = name;
