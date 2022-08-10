@@ -1,8 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:digital_identity_ui/Enums/Enums/ModelEnums.dart';
-import 'package:digital_identity_ui/RepoLayer/Models/LocationModel.dart';
-import 'package:digital_identity_ui/ServiceLayer/ApiService.dart';
 import 'package:digital_identity_ui/screens/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,18 +15,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
-        systemStatusBarContrastEnforced:false,
-        statusBarIconBrightness:Theme.of(context).brightness == Brightness.dark?Brightness.light:Brightness.dark,
+        systemStatusBarContrastEnforced: false,
+        statusBarIconBrightness: Theme.of(context).brightness == Brightness.dark
+            ? Brightness.light
+            : Brightness.dark,
         statusBarColor: Colors.transparent,
       ),
       child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primaryColor: Color(0xff8c261e),
-          primarySwatch: Colors.brown,
-        ),
-        home:const Login()//const MyHomePage(title: 'Flutter Demo Home Page'),
-      ),
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primaryColor: Color(0xff8c261e),
+            primarySwatch: Colors.brown,
+          ),
+          home:
+              const Login() //const MyHomePage(title: 'Flutter Demo Home Page'),
+          ),
     );
   }
 }
@@ -48,10 +48,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() async {
     //start by adding
-    List<LocationModel> alllocations = await ApiService()
-            .getAll("location/get-all-locations", ModelEnums.locationModel)
-        as List<LocationModel>;
-    print(alllocations.first.name);
   }
 
   @override
