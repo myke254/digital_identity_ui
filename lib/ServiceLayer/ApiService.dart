@@ -8,15 +8,18 @@ import 'package:digital_identity_ui/RepoLayer/Models/PhotosModel.dart';
 import 'package:digital_identity_ui/RepoLayer/Models/TokenModel.dart';
 import 'package:digital_identity_ui/RepoLayer/Models/VoucheeModel.dart';
 import 'package:digital_identity_ui/RepoLayer/Models/VoucherModel.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 class ApiService {
+  var dio = Dio();
+
   final String apiUrl = "https://ab48-197-232-61-244.eu.ngrok.io/api/";
   String authUrl = "https://api-omnichannel-dev.azure-api.net/v2.1/oauth/token";
   Future<String> getToken() async {
     Uri urlvalue = Uri.parse(authUrl);
 
-    Response resp = await post(urlvalue,
+    http.Response resp = await http.post(urlvalue,
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         body:
             "client_secret=OTI0QUFGRTMtMjc3My00QUNELUFGMzktQjkzQzUwNzA4RjhD&client_id=A39A9A4B8B8D406&grant_type=client_credentials");
@@ -27,7 +30,7 @@ class ApiService {
   Future<List<dynamic>> getAll(String url, ModelEnums type) async {
     String token = await getToken();
 
-    Response res = await get(Uri.parse('$apiUrl$url'),
+    http.Response res = await http.get(Uri.parse('$apiUrl$url'),
         headers: {HttpHeaders.authorizationHeader: token});
     if (res.statusCode == 200) {
       List<dynamic> body = jsonDecode(res.body);
@@ -64,7 +67,7 @@ class ApiService {
 
   Future<dynamic> getById(String url, String id, ModelEnums type) async {
     String token = await getToken();
-    final response = await get(Uri.parse('$apiUrl$url/$id'),
+    final response = await http.get(Uri.parse('$apiUrl$url/$id'),
         headers: {HttpHeaders.authorizationHeader: token});
 
     if (response.body.isNotEmpty) {
@@ -94,26 +97,26 @@ class ApiService {
     }
   }
 
-  Future<bool> create(Map data, String url) async {
+  Future<String> create(Map data, String url) async {
     String token = await getToken();
-    final Response response = await post(
+    final http.Response response = await http.post(
       Uri.parse('$apiUrl$url'),
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
+        'Content-Type': 'application/json',
         HttpHeaders.authorizationHeader: token
       },
       body: jsonEncode(data),
     );
     if (response.statusCode == 200) {
-      return true;
+      return response.body;
     } else {
-      return false;
+      return "false";
     }
   }
 
   Future<bool> updateid(String url, String id, Map data) async {
     String token = await getToken();
-    final Response response = await patch(
+    final http.Response response = await http.patch(
       Uri.parse('$apiUrl$url/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -130,7 +133,7 @@ class ApiService {
 
   Future<bool> deleteid(String url, String id) async {
     String token = await getToken();
-    Response res = await delete(Uri.parse('$apiUrl$url/$id'),
+    http.Response res = await http.delete(Uri.parse('$apiUrl$url/$id'),
         headers: {HttpHeaders.authorizationHeader: token});
 
     if (res.statusCode == 200) {
